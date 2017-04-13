@@ -101,7 +101,7 @@ function sendMdnToDOM (getMdnData) {
 
 // listen for user submit
 $(document).ready(function () {
-	$(/* listen for #landing-page SUBMIT BUTTON */).submit(function () {
+	$(/* target #landing-page SUBMIT BUTTON */).submit(function () {
 		
 		// store user search in state
 
@@ -109,5 +109,12 @@ $(document).ready(function () {
 		// sendQuoteToDOM
 		// hideLandingPage
 		// unhideResultsPage
+	});
+	$(/* target #results-page SUBMIT BUTTON */).submit(function () {
+		
+		// store user search in state
+
+		// run DOM functions
+		// sendQuoteToDOM
 	});
 });
