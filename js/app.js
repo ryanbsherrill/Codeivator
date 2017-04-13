@@ -1,28 +1,113 @@
-// State Object
+/* CONSTANT VARIABLES */
 
-// what information do you need to store?
-// items []
+// API Key Variables
+var YOUTUBE_API = "url";
+var MEETUPS_API = "url";
+var MDN_API = "url";
 
 
-// State Modification Functions
+// API Call Parameters
+var youTubeCallParams = {
+	part: 'snippet',
+	key: 'AIzaSyAvVDxP5JbEej3bMbeCftybGlcTe34tBCQ',
+	type: 'video'
+};
+var meetUpsCallParams = {};
+var mdnCallParams = {};
 
-// these represent everything you can do to state
-// take state as first argument
-// any other data as other arguments
-// should contain no jQuery code
 
-// DOM Modification Functions (Functions that render state)
+/* API CALLS */
+var getYouTubeData = function() {
+	$.getJSON(YOUTUBE_API, youTubeCallParams);
+};
+var getMeetUpsData = function() {
+	$.getJSON(MEETUPS_API, meetUpsCallParams);
+};
+var getMdnData = function() {
+	$.getJSON(MDN_API, mdnCallParams);
+};
 
-// render HTML into a DOM element
-// single function for each part of the page you want to update
+
+/* CODING_QUOTES MOD FUNCTIONS */
+function getQuote () {
+	// randomly pull quote "permanently" from repo
+	// and return it
+}
+
+
+/* QUOTE REPOSITORY */
+var CODING_QUOTES = [
+	{
+		name: "Steve Jobs",
+		quote: "Think Different",
+		source: "Apple",
+	},
+	{
+		name: "Richard Hendricks",
+		quote: "I mean, Jobs was a poser. He didn't even write code.",
+		source: "Silicon Valley (HBO)",
+	},
+	{
+		name: "Peter Gregory",
+		quote: "Silicon Valley is the cradle of innovation because of dropouts.",
+		source: "Silicon Valley (HBO)",
+	},
+];
+
+
+/* STATE: What info do you need to store? */
+var state = {
+	// (language, type, and problem) submitted by user
+};
+
+
+/* STATE MOD FUNCTIONS: Everything you can do to state */
+function storeSearch (state, userSearch) {
+	// push 3 search terms (language, type, and problem) to state
+}
+
+
+/* DOM MOD FUNCTIONS: Functions that render state */
 // Two arguments: state object, and a DOM element to render into
-// body constructs the HTML to put into the DOM element
-// each render function should finish with with a line that calls =>
-// element.html to replace the old content w. the new content
+function hideLandingPage () {
+	// target landing page and hide it
+}
+function unhideResultsPage () {
+	// target results page and unhide it
+}
+function sendQuoteToDOM (getQuote) {
+	// take getQuote as argument
+	// target CODING QUOTES section of HTML
+	// and add (person, quote, & source) to
+}
+function sendYouTubeToDOM (getYouTubeData) {
+	// getYouTubeData as argument
+	// target MAIN VIDEO section of HTML
+	// and add content
+}
+function sendMeetUpsToDOM (getMeetUpsData) {
+	// getMeetUpsData as argument
+	// target MEETUPS section of HTML
+	// amd add content
+}
+function sendMdnToDOM (getMdnData) {
+	// getMdnData as agument
+	// target CODE SNIPPET SECTION of HTML
+	// and add content
+}
 
-// Event Listeners
 
-// when an event fires, call one or more of your state mod functions =>
-// to update the state appropriately
-// then call one or more of your render functions to make your DOM =>
-// reflect the updated state
+/* EVENT LISTENERS */
+
+// listen for user submit
+$(document).ready(function () {
+	$(/* listen for #landing-page SUBMIT BUTTON */).submit(function () {
+		
+		// store user search in state
+
+		// run DOM functions
+		// sendQuoteToDOM
+		// hideLandingPage
+		// unhideResultsPage
+	});
+});
