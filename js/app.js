@@ -5,7 +5,6 @@ var YOUTUBE_API = "url";
 var MEETUPS_API = "url";
 var MDN_API = "url";
 
-
 // API Call Parameters
 var youTubeCallParams = {
 	part: 'snippet',
@@ -17,6 +16,8 @@ var mdnCallParams = {};
 
 
 /* API CALLS */
+// RACHEL NOTE: Use success callbacks in getJSON
+// functions
 var getYouTubeData = function() {
 	$.getJSON(YOUTUBE_API, youTubeCallParams);
 };
@@ -29,10 +30,12 @@ var getMdnData = function() {
 
 
 /* CODING_QUOTES MOD FUNCTIONS */
-function getQuote () {
+function getQuote (n) {
 	// randomly pull quote "permanently" from repo
 	// and return it
+	return n * n;
 }
+console.log(getQuote(55));
 
 
 /* QUOTE REPOSITORY */
@@ -59,6 +62,10 @@ var CODING_QUOTES = [
 var state = {
 	// (language, type, and problem) submitted by user
 };
+
+// RACHEL NOTE: Clear out everything on the state when
+// the user hits submit -- before it's populated
+// by API calls
 
 
 /* STATE MOD FUNCTIONS: Everything you can do to state */
@@ -100,21 +107,21 @@ function sendMdnToDOM (getMdnData) {
 /* EVENT LISTENERS */
 
 // listen for user submit
-$(document).ready(function () {
-	$(/* target #landing-page SUBMIT BUTTON */).submit(function () {
+// $(document).ready(function () {
+// 	$(/* target #landing-page SUBMIT BUTTON */).submit(function () {
 		
-		// store user search in state
+// 		// store user search in state
 
-		// run DOM functions
-		// sendQuoteToDOM
-		// hideLandingPage
-		// unhideResultsPage
-	});
-	$(/* target #results-page SUBMIT BUTTON */).submit(function () {
+// 		// run DOM functions
+// 		// sendQuoteToDOM
+// 		// hideLandingPage
+// 		// unhideResultsPage
+// 	});
+// 	$(/* target #results-page SUBMIT BUTTON */).submit(function () {
 		
-		// store user search in state
+// 		// store user search in state
 
-		// run DOM functions
-		// sendQuoteToDOM
-	});
-});
+// 		// run DOM functions
+// 		// sendQuoteToDOM
+// 	});
+// });
