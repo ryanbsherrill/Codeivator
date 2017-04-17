@@ -1,0 +1,89 @@
+/* BODY | OVERALL */
+
+* {
+	font-family: "Interstate","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+	background-color: pink;
+}
+/**, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	height: 200px;
+	width: 300px;
+	margin-top: 300px;
+}
+
+h1 {
+	font-size: 26px;
+	font-style: normal;
+	font-weight: lighter;
+	font-family: sans-serif;
+}
+
+img {
+	margin-top: 15px;
+	width: 50%;
+	max-height: 200px;
+	max-width: 300px;
+	display: block;
+}*/
+
+.centered {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+
+.hidden {
+	display: none;
+}
+
+
+/* LANDING PAGE */
+
+#landing-page {
+	margin-top: 225px;
+	background-color: 
+}
+
+.main-page-search {
+
+}
+
+.main-page-search-label {
+	font-size: 58px;
+	color: white;
+	display: block;
+}
+
+.search-and-submit {
+
+}
+
+.main-page-search-input {
+	font-family: "Interstate","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+	text-align: center;
+	margin-right: 0;
+	width: 275px;
+	height: 25px;
+}
+
+.main-page-search-submit {
+	margin-left: 0;
+    height: 25px;
+}
+
+ .main-page-search-input, .main-page-search-submit {
+    font-size: 15px;
+    padding: 0.3em 0.4em;
+    margin: 0.1em 0.2em;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    border: 2px solid white;
+    color: #757575;
+}
+
+/* RESULTS PAGE */
