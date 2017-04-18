@@ -1,11 +1,8 @@
 NOTES
 
-Main page
-* add submit button to right side of search bar
-search bar - enter language, subject, problem
-
-* hide search bar
-* API call - to YouTube
+<landing page>
+* hide(or move) search bar
+* api call to youtube
 * get back top vids, title, description, etc.
 
 2nd page
