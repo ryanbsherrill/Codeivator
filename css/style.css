@@ -1,8 +1,16 @@
 /* BODY | OVERALL */
 
 * {
-	font-family: "Interstate","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
-	background-color: pink;
+	font-family: 
+		"Interstate",
+		"Lucida Grande",
+		"Lucida Sans Unicode",
+		"Lucida Sans",
+		Garuda,
+		Verdana,
+		Tahoma,
+		sans-serif;
+		background-color: pink;
 }
 /**, *:before, *:after {
 	box-sizing: inherit;
@@ -43,47 +51,136 @@ img {
 
 /* LANDING PAGE */
 
-#landing-page {
+#lp {
 	margin-top: 225px;
 	background-color: 
 }
 
-.main-page-search {
+.lp-form {
 
 }
 
-.main-page-search-label {
-	font-size: 58px;
+.lp-header {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.lp-header-slogan {
+	color: white;
+	background-color: #ae81ff;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 8px;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 5px;
+	padding-left: 8px;
+	height: 22px;
+
+	text-align: left;
+	font-size: 14px;
+	font-weight: bold;
+	display: block;
+    
+    width: 375px;
+    
+}
+
+.lp-header-label {
+	margin: 0px;
+	font-size: 57px;
 	color: white;
 	display: block;
+	background-color: #b2bee9;
 }
 
-.search-and-submit {
-
+.lp-header-label-text {
+	background-color: #b2bee9;
+	padding-top: -5px;
+	margin-top: 0px;
 }
 
-.main-page-search-input {
+.lp-search {
+}
+
+.lp-search-input {
 	font-family: "Interstate","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
 	text-align: center;
-	margin-right: 0;
-	width: 275px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 1px;
+	padding-right: 1px;
+	width: 280px;
 	height: 25px;
 }
 
-.main-page-search-submit {
-	margin-left: 0;
+.lp-search-submit {
+	margin-left: -5px;
+	margin-right: 0px
+	padding: 0px;
     height: 25px;
 }
 
- .main-page-search-input, .main-page-search-submit {
-    font-size: 15px;
-    padding: 0.3em 0.4em;
-    margin: 0.1em 0.2em;
+.lp-search-input:hover::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
+}
+.lp-search-input:hover::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+.lp-search-input:-ms-input-placeholder { /* IE 10+ */
+  color: black;
+}
+.lp-search-input:-moz-placeholder { /* Firefox 18- */
+  color: black;
+}
+
+ .lp-search-input, .lp-search-submit {
+    font-size: 16px;
     -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
-    border: 2px solid white;
+    border: 3px solid pink;
     color: #757575;
 }
 
+.lp-search-input:hover {
+	border: 3px solid white;
+	color: #757575;
+}
+
+.lp-search-submit:hover {
+	border: 3px solid white;
+	color: black;
+}
+
 /* RESULTS PAGE */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
