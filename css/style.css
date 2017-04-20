@@ -49,6 +49,7 @@ img {
 }
 
 
+
 /* LANDING PAGE */
 
 #lp {
@@ -154,7 +155,16 @@ img {
 	color: black;
 }
 
+
+
 /* RESULTS PAGE */
+
+p {
+	box-sizing: border-box;
+	max-width: 300px;
+	max-height: 50px;
+	font-size: 16px;
+}
 
 
 

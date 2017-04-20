@@ -10,6 +10,7 @@
 <body>
 	<!-- LANDING PAGE => lp -->
 	<section id="lp"> 
+		
 		<!-- visible on page load | hidden after submit -->
 		<form class="lp-form centered">
 			
@@ -21,28 +22,46 @@
 			
 			<!-- search bar -->
 			<div class="lp-search">
-				<input class="lp-search-input" type="text" placeholder="(JAVASCRIPT, METHODS, NEW YORK)">
-				<button class="lp-search-submit">[ SUBMIT ]</button>
+				<input 
+					class="lp-search-input" 
+					type="text" 
+					placeholder="(JAVASCRIPT, METHODS, NEW YORK)" 
+					required="required"
+					oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')"
+					oninput="setCustomValidity('')">
+				<button class="lp-search-submit" type="submit">[ SUBMIT ]</button>
 			</div>
 
 		</form>
 	</section>
 
-	<!-- RESULTS PAGE -->
-	<section id="results-page">
-		<!-- hidden on page load | visible after submit -->
-		<div class="search-and-submit-section">
-		<!-- SEARCH BAR & SUBMIT BUTTON 
-		* will sit at the top like a nav
-		* same as one on landing page but smaller
-		* -->
-		<!-- RACHEL NOTE: include a title or logo here too. BEST ELEMENT TO USE is a form w/ and input and submit button -->
-			<form class="results-page-search">
-				
-			</form>
-		</div>
+	<!-- RESULTS PAGE => rp -->
+	<section id="rp" class="hidden">
 
-		<div class="video-display-section">
+		<!-- hidden on page load | visible after submit -->
+		<form class="rp-form centered">
+			
+			<!-- logo & slogan -->
+			<div class="rp-header">
+				<p class="rp-header-slogan">Let us do the research for you</p>
+				<label class="rp-header-label"><span class="rp-header-label-text">CODEIVATOR</span></label>
+			</div>
+			
+			<!-- search bar -->
+			<div class="rp-search">
+				<input 
+					class="rp-search-input" 
+					type="text" 
+					placeholder="(JAVASCRIPT, METHODS, NEW YORK)" 
+					required="required"
+					oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')"
+					oninput="setCustomValidity('')">
+				<button class="rp-search-submit" type="submit">[ SUBMIT ]</button>
+			</div>
+		</form>
+			
+
+		<div class="rp-video-section">
 		<!-- MAIN VIDEO & ALTERNATES 
 		* recieves data from YouTube API & displays in main
 		and side DIVs as thumbnails
@@ -58,7 +77,7 @@
 		and plays from the place of main -->
 		</div>
 
-		<div class="coding-quotes-section">
+		<div class="rp-quote-section">
 			<!-- CODING QUOTES SECTION 
 		* will receive & display: name, quote, & source from
 		the CODING_QUOTES repository
@@ -70,7 +89,7 @@
 		-->
 		</div>
 
-		<div>
+		<div class="rp-meetup-section">
 		<!-- MEETUPS SECTION 
 		* will sit right of main player 
 		* sits in 1/4 col
@@ -84,6 +103,9 @@
 
 
 <!-- SCRIPTS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+
 
 </body>
 </html>
