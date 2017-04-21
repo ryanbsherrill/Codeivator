@@ -25,11 +25,22 @@
 				<input 
 					class="lp-search-input" 
 					type="text" 
-					placeholder="(JAVASCRIPT, METHODS, NEW YORK)" 
+					placeholder="LANGUAGE" 
 					required="required"
 					oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')"
 					oninput="setCustomValidity('')">
+				<input 
+					class="lp-city" 
+					type="text" 
+					placeholder="CITY" 
+					required="required">
+					<input 
+					class="lp-state" 
+					type="text" 
+					placeholder="STATE" 
+					required="required">
 				<button class="lp-search-submit" type="submit">[ SUBMIT ]</button>
+				
 			</div>
 
 		</form>
@@ -43,7 +54,6 @@
 			
 			<!-- logo & slogan -->
 			<div class="rp-header">
-				<p class="rp-header-slogan">Let us do the research for you</p>
 				<label class="rp-header-label"><span class="rp-header-label-text">CODEIVATOR</span></label>
 			</div>
 			
@@ -52,16 +62,27 @@
 				<input 
 					class="rp-search-input" 
 					type="text" 
-					placeholder="(JAVASCRIPT, METHODS, NEW YORK)" 
+					placeholder="LANGUAGE" 
 					required="required"
 					oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')"
 					oninput="setCustomValidity('')">
+				<input 
+					class="rp-city" 
+					type="text" 
+					placeholder="CITY" 
+					required="required">
+					<input 
+					class="rp-state" 
+					type="text" 
+					placeholder="STATE" 
+					required="required">
 				<button class="rp-search-submit" type="submit">[ SUBMIT ]</button>
+				
 			</div>
-		</form>
 			
 
-		<div class="rp-video-section">
+		<div class="rp-video-section centered">
+		</div>
 		<!-- MAIN VIDEO & ALTERNATES 
 		* recieves data from YouTube API & displays in main
 		and side DIVs as thumbnails
@@ -75,9 +96,9 @@
 		EXTRA: play main in place 
 		EXTRA: if side thumb is clicked, it replaces
 		and plays from the place of main -->
-		</div>
+		
 
-		<div class="rp-quote-section">
+		<div class="rp-quote-section centered">
 			<!-- CODING QUOTES SECTION 
 		* will receive & display: name, quote, & source from
 		the CODING_QUOTES repository

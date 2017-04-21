@@ -15,37 +15,58 @@ function sendYouTubeToDOM (data) {
 		console.log(item);
 
 		// DOM MOD PLACEHOLDER
-		$('.rp-video-display').append(item);
+		$('.rp-video-display').append(jawn);
 	});
 }
+
+// DISPLAY VIDEO
+var displayResults = function(data){
+		$('.rp-video-section').append(
+			'<a href="https://www.youtube.com/watch?v=' + data.items[0].id.videoId +
+			'" target="_blank"><img src=' + data.items[0].snippet.thumbnails.high.url + 
+			' class="centered"></a>');
+};
+
+// video
+var jawn =  "<video width='320' height='240' controls>" +
+ 				"<source src='' type=''>" +
+  				"<source src='' type=''>" +
+  				"Your browser does not support the video tag" +
+			"</video>";
 
 
 
 /* MEETUP FUNCTIONALITY */
 
-// FUNCTIONAL => Returning Proper Data
-var city; // add to submission form
-var state; // add to submission form
-var topic; // FUNCTIONAL
-var MEETUP_API = "https://api.meetup.com/2/open_events?sign=true&photo-host=public&country=US&city=Washington&state=DC&page=5&key=3b2c776267d212831792c3364645c1&dataType=jsonp&topic=JavaScript,Arrays";
-var meetupCallParams = {
-	dataType: 'jsonp',
-	method: 'get',
-	key: '3b2c776267d212831792c3364645c1',
-};
+// NOT FUNCTIONAL => Need to figure out how to use OAUTH
+
+// var city = "";
+// var state = "";
+// var topic = "";
+// var MEETUP_API = "https://api.meetup.com/2/open_events?sign=true&photo-host=public&country=US&page=5&key=3b2c776267d212831792c3364645c1&dataType=jsonp" + 
+// 	"&city=" + city + "&state=" + state + "&topic=" + topic + "";
+// var MEETUP_API = "";
+
+// var meetupCallParams = {
+// 	dataType: 'jsonp',
+// 	method: 'get',
+// 	key: '3b2c776267d212831792c3364645c1'
+// };
+
 
 // SUCCESS CALLBACK => FUNCTIONAL => To Be Replaced w/ DOM Mod Function
-function sendMeetupToDOM (data) {
-	console.log(" Success!!! You got " + data.meta.count + " Meetup results back.");
-	data.results.forEach(function (result) {
-		console.log(result);
-		console.log(result.name);
 
-		// DOM MOD PLACEHOLDER
-		$('.rp-meetup-section').append("<p>" + result.name + "</p>");
-		$('.rp-meetup-section').append("<p>" + result.event_url + "</p>");
-	});
-}
+// function sendMeetupToDOM (data) {
+// 	console.log(" Success!!! You got " + data.meta.count + " Meetup results back.");
+// 	data.results.forEach(function (result) {
+// 		console.log(result);
+// 		console.log(result.name);
+
+// 		// DOM MOD PLACEHOLDER
+// 		$('.rp-meetup-section').append("<p>" + result.name + "</p>");
+// 		$('.rp-meetup-section').append("<p>" + result.event_url + "</p>");
+// 	});
+// }
 
 
 
@@ -72,13 +93,13 @@ var CODING_QUOTES = [
 
 // SUCCESS TEST => To Be Replaced w/ DOM Mod Function
 function getQuote (CODING_QUOTES) {
-	return CODING_QUOTES[Math.floor(Math.random() * CODING_QUOTES.length)];
+	return CODING_QUOTES[ Math.floor(Math.random() * CODING_QUOTES.length) ];
 }
 
 
 
 /* STATE OBJECT */
-var state = {
+var stateObject = {
 	// What info do you need to store?
 	// (language, type, and problem) submitted by user
 	// RACHEL NOTE: Clear out everything on the state when
@@ -89,7 +110,7 @@ var state = {
 
 
 /* STATE MOD FUNCTIONS: Everything you can do to state */
-function storeSearch (state, userSearch) {
+function storeSearch (stateObject, userSearch) {
 	// push 3 search terms (language, type, and problem) to state
 }
 
@@ -102,8 +123,18 @@ function hideLandingPage () {
 function unhideResultsPage () {
 	$('#rp').toggleClass('hidden');
 }
-function sendQuoteToDOM (getQuote) {
-	$('.rp-quote-section').append("<p>" + getQuote() + "</p>");
+function sendQuoteToDOM (quote) {
+	var quoteToSend = getQuote(CODING_QUOTES);
+	console.log(quoteToSend.name);
+	console.log(quoteToSend.quote);
+	console.log(quoteToSend.source);
+
+
+	$('.rp-quote-section').html(
+		"<p>" + quoteToSend.name + "</p>" +
+		"<p>" + quoteToSend.quote + "</p>" +
+		"<p>" + quoteToSend.source + "</p>"
+	);
 }
 
 
@@ -111,7 +142,7 @@ function sendQuoteToDOM (getQuote) {
 
 /* API CALLS */
 var getYouTubeData = function() {
-	$.getJSON(YOUTUBE_API, youTubeCallParams, sendYouTubeToDOM);
+	$.getJSON(YOUTUBE_API, youTubeCallParams, displayResults);
 };
 
 var getMeetupData = function() {
@@ -122,21 +153,29 @@ var getMdnData = function() {
 	$.getJSON(MDN_API, mdnCallParams, successCallback);
 };
 
-
-
 /* EVENT LISTENERS */
 
 // NEED TO MAKE => Listener for valid entry by user
 $('.lp-search-submit').on('click', function (e) {
 	e.preventDefault();
 	
-	// GET USER INPUT FOR CALLS
+	// GET USER INPUT FOR VIDEOS
 	youTubeCallParams.q = $('.lp-search-input').val();
-	topic = $('.lp-search-input').val().replace(/[^a-zA-Z0-9 ]/g, "").split(' ').join('%');
 	
+
+	// GET USER INPUT FOR MEETUP API CALL => MODIFY MEETUP_API value
+
+	// city += $('.lp-city').val().replace(/[^a-zA-Z0-9 ]/g, "").split(' ').join('%');
+	// state += $('.lp-state').val().replace(/[^a-zA-Z0-9 ]/g, "").split(' ').join('%');
+	// topic += $('.lp-search-input').val().replace(/[^a-zA-Z0-9 ]/g, "").split(' ').join('%');
+
+	//var MEETUP_API = "https://api.meetup.com/2/open_events?sign=true&photo-host=public&country=US&city=Washington&state=DC&page=5&key=3b2c776267d212831792c3364645c1&dataType=jsonp&topic=" + topic + "";
+	// console.log(MEETUP_API);
+
 	// MAKE REQUESTS
 	getYouTubeData();
-	getMeetupData();
+	// getMeetupData();
+
 
 
 	// MODIFY THE DOM

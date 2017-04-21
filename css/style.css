@@ -57,10 +57,6 @@ img {
 	background-color: 
 }
 
-.lp-form {
-
-}
-
 .lp-header {
 	margin-right: auto;
 	margin-left: auto;
@@ -102,24 +98,26 @@ img {
 	margin-top: 0px;
 }
 
+
 .lp-search {
 }
 
-.lp-search-input {
+.lp-search-input, .lp-city, .lp-state, .lp-search-submit {
 	font-family: "Interstate","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
 	text-align: center;
 	margin-left: 0px;
 	margin-right: 0px;
 	padding-left: 1px;
 	padding-right: 1px;
-	width: 280px;
+	width: 100px;
 	height: 25px;
 }
 
+
 .lp-search-submit {
-	margin-left: -5px;
-	margin-right: 0px
-	padding: 0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
     height: 25px;
 }
 
@@ -136,7 +134,20 @@ img {
   color: black;
 }
 
- .lp-search-input, .lp-search-submit {
+.lp-city:hover::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
+}
+.lp-city:hover::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+.lp-city:-ms-input-placeholder { /* IE 10+ */
+  color: black;
+}
+.lp-city:-moz-placeholder { /* Firefox 18- */
+  color: black;
+}
+
+ .lp-search-input, .lp-search-submit, .lp-city, .lp-state {
     font-size: 16px;
     -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box;
@@ -154,7 +165,14 @@ img {
 	border: 3px solid white;
 	color: black;
 }
-
+.lp-city:hover {
+	border: 3px solid white;
+	color: black;
+}
+.lp-state:hover {
+	border: 3px solid white;
+	color: black;
+}
 
 
 /* RESULTS PAGE */
@@ -164,6 +182,18 @@ p {
 	max-width: 300px;
 	max-height: 50px;
 	font-size: 16px;
+}
+
+/* rp-video-section */
+.rp-video-section {
+	margin-top: 50px;
+}
+
+/* rp-quote-section */
+.rp-quote-section {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 
