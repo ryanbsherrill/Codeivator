@@ -131,9 +131,9 @@ function sendQuoteToDOM (quote) {
 
 
 	$('.rp-quote-section').html(
-		"<p>" + quoteToSend.name + "</p>" +
-		"<p>" + quoteToSend.quote + "</p>" +
-		"<p>" + quoteToSend.source + "</p>"
+		
+		"<h1 class='centered'>" + quoteToSend.quote + "</h1>" +
+		"<h3>" + "- " + quoteToSend.name + "</h3>"
 	);
 }
 
