@@ -10,8 +10,9 @@
 		Verdana,
 		Tahoma,
 		sans-serif;
-		background-color: pink;
+		background-color: black;
 }
+
 /**, *:before, *:after {
 	box-sizing: inherit;
 }
@@ -53,34 +54,15 @@ img {
 /* LANDING PAGE */
 
 #lp {
-	margin-top: 225px;
-	background-color: 
+	background-color: black;
+
 }
 
 .lp-header {
 	margin-right: auto;
 	margin-left: auto;
-}
-
-.lp-header-slogan {
-	color: white;
-	background-color: #ae81ff;
-
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 8px;
-	padding-top: 5px;
-	padding-right: 0px;
-	padding-bottom: 5px;
-	padding-left: 8px;
-	height: 22px;
-
-	text-align: left;
-	font-size: 14px;
-	font-weight: bold;
-	display: block;
-    
-    width: 375px;
+	margin-top: 225px;
+	border: black;
 }
 
 .lp-header-label {
@@ -88,11 +70,9 @@ img {
 	font-size: 57px;
 	color: white;
 	display: block;
-	background-color: #b2bee9;
 }
 
 .lp-header-label-text {
-	background-color: #b2bee9;
 	padding-top: -5px;
 	margin-top: 0px;
 }
@@ -151,13 +131,13 @@ img {
     -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
-    border: 3px solid pink;
+    border: 3px solid black;
     color: #757575;
 }
 
 .lp-search-input:hover {
 	border: 3px solid white;
-	color: #757575;
+	color: black;
 }
 
 .lp-search-submit:hover {
@@ -195,32 +175,3 @@ p {
 	margin-left: auto;
 	margin-right: auto;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
