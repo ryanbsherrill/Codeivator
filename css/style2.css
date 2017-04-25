@@ -67,10 +67,10 @@ p {
 	color: white;
 }
 
-#search-bar, #city-state {
+.search-bar, .submit-button {
 	height: 45px;
 	text-align: center;
-	font-size: 24px;
+	font-size: 32px;
 	color: white;
 	padding: 0px;
 	border: 0px;
@@ -91,15 +91,16 @@ p {
 	color: white;
 }
 
+
 #the-quote, #the-person {
 	height: 50%;
 	padding: 0px;
 	border: 0px;
 	margin-top: 5px;
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 	margin-left: auto;
 	margin-right: auto;
-
+	font-size: 24px;
 }
 
 .quote {

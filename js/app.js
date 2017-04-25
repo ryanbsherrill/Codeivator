@@ -26,44 +26,37 @@
 // 	});
 // }
 
-
 /* STATE */
-var stateObject = {
-	// What info do you need to store?
-	// (language, type, and problem) submitted by user
-	// RACHEL NOTE: Clear out everything on the state when
-	// the user hits submit -- before it's populated
-	// by API calls
-};
+// var stateObject = {
+// 	// What info do you need to store?
+// 	// (language, type, and problem) submitted by user
+// 	// RACHEL NOTE: Clear out everything on the state when
+// 	// the user hits submit -- before it's populated
+// 	// by API calls
+// };
 
-function storeSearch (stateObject, userSearch) {
-	// push search inquiry & results to state in a new obj
-}
-
+// function storeSearch (stateObject, userSearch) {
+// 	// push search inquiry & results to state in a new obj
+// }
 
 /* YOUTUBE */
 var YOUTUBE_API = "https://www.googleapis.com/youtube/v3/search";
-var youTubeSRC = "https://www.youtube.com/embed/";
 var youTubeCallParams = {
 	part: 'snippet',
 	key: 'AIzaSyAvVDxP5JbEej3bMbeCftybGlcTe34tBCQ',
-	type: 'video'
+	type: 'video',
 };
 
-var youTubeToDOM = function (data) {
-	console.log(data.items[0].id.videoId);
-	youTubeSRC += data.items[0].id.videoId;
+function youTubeToDOM (data) {
+	$('iframe').attr('src', "https://www.youtube.com/embed/" + data.items[0].id.videoId);
+}
 
-	$('iframe').attr('src', youTubeSRC);
-};
-
-var getYouTubeData = function() {
+function getYouTubeData () {
 	$.getJSON(YOUTUBE_API, youTubeCallParams, youTubeToDOM);
-};
-
+}
 
 /* QUOTES */
-var CODING_QUOTES = [
+var codingQuotes = [
 	{
 		name: "Steve Jobs",
 		quote: "Think Different",
@@ -81,48 +74,87 @@ var CODING_QUOTES = [
 	},
 ];
 
-var getQuote = function (CODING_QUOTES) {
-	return CODING_QUOTES[Math.floor(Math.random() * CODING_QUOTES.length)];
-};
-
-var sendQuoteToDOM = function (getQuote) {
-	var quoteToSend = getQuote(CODING_QUOTES);
-	
-	console.log(quoteToSend.name);
-	console.log(quoteToSend.quote);
-	console.log(quoteToSend.source);
-};
-
+function getQuote (codingQuotes) {
+	var newQuote = codingQuotes[Math.floor(Math.random() * codingQuotes.length)];
+	$('#the-quote').append('"' + newQuote.quote + '"');
+	$('#the-person').append("=> " + newQuote.name);
+}
 
 /* DOM MODS */
-var hideLandingPage = function () {
-	$('#lp').toggleClass('hidden');
-};
+function hideLandingPage () {
+	$('#lp').fadeOut(0);
+}
 
-var unhideResultsPage = function () {
-	$('#rp').toggleClass('hidden');
-};
+function hideResultsPage () {
+	$('#lp').fadeOut(0);
+}
+
+function unhideResultsPage () {
+	$('#rp').removeClass('hidden');
+}
 
 
-/* LISTENERS */
-$('.lp-search-submit').on('click', function (e) {
+/* EVENT LISTENERS */
+$('.a').on('click', function (e) {
+
 	e.preventDefault();
+		// clearing
+	youTubeCallParams.q = "";
+	$('#the-quote').empty();
+	$('#the-person').empty();
+	
 
-	// NEED TO MAKE: Listener => Valid Entry
-	$(/* which selector??? */).on('submmit', function () {
-		// somethingsomethingsomethingdarkside
-	});
+	getQuote(codingQuotes);
+	
 
-	// USER INPUT
-	youTubeCallParams.q = $('.lp-search-input').val();
+	// user input
+	youTubeCallParams.q = $('.search-bar').val();
 
-	// API CALLS
+	// api calls
+	
 	getYouTubeData();
 
-	// DOM MODS
+	// dom mods
 	hideLandingPage();
 	unhideResultsPage();
 
-	// MAKE THIS FUNCTION
-	sendQuoteToDOM();
+	$('.b').on('click', function () {
+		e.preventDefault();
+		// clearing
+		youTubeCallParams.q = "";
+		$('#the-quote').empty();
+		$('#the-person').empty();
+		
+		getQuote(codingQuotes);
+		
+
+		// user input
+		youTubeCallParams.q = $('.search-bar').val();
+
+		// api calls
+		
+		getYouTubeData();
+	});
 });
+
+// 	$('.submit-button').on('click', function (e) {
+// 		$('.search-bar').empty();
+// 		youTubeSRC = "";
+
+
+// 		// api calls
+// 		getYouTubeData();
+
+// 		// dom mods
+// 		// hideLandingPage();
+// 		// unhideResultsPage();
+		
+	
+// });
+
+
+
+
+
+
+
