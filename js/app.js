@@ -1,31 +1,3 @@
-/* MEETUP */
-// NOT FUNCTIONAL => Ran into issues w/ Acces-Control-Allow-Origin Error
-// Will be implemented when app is rebuild w/ Node & Express
-// var topic = "";
-// var MEETUP_API = "https://api.meetup.com/2/open_events?sign=true&photo-host=public&country=US&topic=" + topic + "t&city=Washington&state=DC&page=20&key=68617c6b1d76f47132910394a4b3a9";
-// var meetupCallParams = {
-//   "async": true,
-//   "crossDomain": true,
-//   "url": "https://api.meetup.com/2/open_events?sign=true&photo-host=public&country=US&topic=JavaScript&city=Washington&state=DC&page=20&key=68617c6b1d76f47132910394a4b3a9",
-//   "method": "GET",
-//   "type": "jsonp",
-//   "key": "68617c6b1d76f47132910394a4b3a9",
-//   "headers": {
-//     "authorization": "Basic cnlhbmJzaGVycmlsbDpJbGxzdGVhbHlvdTEzIQ==",
-//     "cache-control": "no-cache",
-//     "postman-token": "3004bc85-9e53-1c49-c0c9-6ada36a258a4"
-//   }
-// };
-
-// SUCCESS CALLBACK => FUNCTIONAL => To Be Replaced w/ DOM Mod Function
-// function sendMeetupToDOM (data) {
-// 	console.log(" Success!!! You got " + data.meta.count + " Meetup results back.");
-// 	data.results.forEach(function (result) {
-// 		console.log(result);
-// 		console.log(result.name);
-// 	});
-// }
-
 /* STATE */
 // var stateObject = {
 // 	// What info do you need to store?
@@ -48,8 +20,24 @@ var youTubeCallParams = {
 };
 
 function youTubeToDOM (data) {
-	$('iframe').attr('src', "https://www.youtube.com/embed/" + data.items[0].id.videoId);
+	$('#video-and-meetup').prepend(
+		"<iframe id='video-section' class='col-xs-8 video' height='360' width='640' src='https:www.youtube.com/embed/" + data.items[0].id.videoId + "'" + "frameborder='2px solid black' allowfullscreen></iframe>");
 }
+
+// ELEMENT CLEARING FUNCTIONS
+function clearFrame () {
+	$('#video-section').remove();
+}
+
+function clearQuote () {
+	$('#the-quote').empty();
+	$('#the-person').empty();
+}
+
+function clearSearch () {
+	$('.rp-search-bar').text().empty();
+}
+
 
 function getYouTubeData () {
 	$.getJSON(YOUTUBE_API, youTubeCallParams, youTubeToDOM);
@@ -96,46 +84,101 @@ function unhideResultsPage () {
 
 /* EVENT LISTENERS */
 $('.a').on('click', function (e) {
-
 	e.preventDefault();
-		// clearing
-	youTubeCallParams.q = "";
-	$('#the-quote').empty();
-	$('#the-person').empty();
-	
 
-	getQuote(codingQuotes);
-	
+	clearFrame();
+	clearQuote();
 
-	// user input
-	youTubeCallParams.q = $('.search-bar').val();
-
-	// api calls
+	youTubeCallParams.q = $('.lp-search-bar').val();
 	
 	getYouTubeData();
+	getQuote(codingQuotes);
 
-	// dom mods
+
 	hideLandingPage();
 	unhideResultsPage();
-
-	$('.b').on('click', function () {
-		e.preventDefault();
-		// clearing
-		youTubeCallParams.q = "";
-		$('#the-quote').empty();
-		$('#the-person').empty();
-		
-		getQuote(codingQuotes);
-		
-
-		// user input
-		youTubeCallParams.q = $('.search-bar').val();
-
-		// api calls
-		
-		getYouTubeData();
-	});
 });
+
+$('.b').on('click', function (e) {
+	e.preventDefault();
+
+	clearFrame();
+	clearQuote();
+	
+
+	youTubeCallParams.q = $('.rp-search-bar').val();
+	
+	getYouTubeData();
+	getQuote(codingQuotes);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $('.a').on('click', function (e) {
+
+// 	e.preventDefault();
+// 		// clearing
+// 	youTubeCallParams.q = "";
+// 	$('#the-quote').empty();
+// 	$('#the-person').empty();
+	
+
+// 	getQuote(codingQuotes);
+	
+
+// 	// user input
+// 	youTubeCallParams.q = $('.search-bar').val();
+
+// 	// api calls
+	
+// 	getYouTubeData();
+
+// 	// dom mods
+// 	hideLandingPage();
+// 	unhideResultsPage();
+
+// 	$('.b').on('click', function () {
+// 		e.preventDefault();
+// 		// clearing
+// 		youTubeCallParams.q = "";
+// 		$('#the-quote').empty();
+// 		$('#the-person').empty();
+		
+// 		getQuote(codingQuotes);
+		
+
+// 		// user input
+// 		youTubeCallParams.q = $('.search-bar').val();
+
+// 		// api calls
+		
+// 		getYouTubeData();
+// 	});
+// });
 
 // 	$('.submit-button').on('click', function (e) {
 // 		$('.search-bar').empty();

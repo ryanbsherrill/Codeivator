@@ -22,12 +22,7 @@
 			</div>
 			
 			<div class="lp-search">
-				<input 
-					class="search-bar" 
-					type="text" 
-					placeholder="JAVASCRIPT, ARRAYS" 
-					required="required"
-					oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')"
+				<input class="search-bar lp-search-bar" type="text" placeholder="JAVASCRIPT, ARRAYS" required="required" oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')"
 					oninput="setCustomValidity('')">
 				<button class="submit-button a" type="submit">[ SUBMIT ]</button>
 				
@@ -41,12 +36,13 @@
 
 			<div id="title-and-search" class="row">
 				<span id="title" class="col-xs-4">C O D E I V A T O R</span>
-				<input class="col-xs-4 search-bar" type="text" placeholder="JAVASCRIPT, ARRAYS">
+				<input class="col-xs-4 search-bar rp-search-bar" type="text" placeholder="JAVASCRIPT, ARRAYS" required="required" oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')"
+					oninput="setCustomValidity('')">
 				<button class="col-xs-4 submit-button b" type="submit">[ SUBMIT ]</button>
 			</div>
 
 			<div id="video-and-meetup" class="row">
-				<iframe id="video-section" class="col-xs-8" height="360" width="640" src="" frameborder="2px solid black" allowfullscreen></iframe>
+				
 				<ul id="meetup-section" class="col-xs-4">
 					<li>MEETUP 1</li>
 					<li>MEETUP 2</li>
