@@ -1,18 +1,3 @@
-/* BODY | OVERALL */
-
-* {
-	font-family: 
-		"Interstate",
-		"Lucida Grande",
-		"Lucida Sans Unicode",
-		"Lucida Sans",
-		Garuda,
-		Verdana,
-		Tahoma,
-		sans-serif;
-		background-color: black;
-}
-
 /**, *:before, *:after {
 	box-sizing: inherit;
 }
@@ -38,6 +23,20 @@ img {
 	display: block;
 }*/
 
+/* BODY | OVERALL */
+* {
+	font-family: 
+		"Interstate",
+		"Lucida Grande",
+		"Lucida Sans Unicode",
+		"Lucida Sans",
+		Garuda,
+		Verdana,
+		Tahoma,
+		sans-serif;
+		background-color: black;
+}
+
 .centered {
 	margin-left: auto;
 	margin-right: auto;
@@ -48,8 +47,6 @@ img {
 .hidden {
 	display: none;
 }
-
-
 
 /* LANDING PAGE */
 
@@ -92,7 +89,6 @@ img {
 	height: 25px;
 }
 
-
 .lp-search-submit {
 	display: block;
 	margin-left: auto;
@@ -126,13 +122,13 @@ img {
   color: black;
 }
 
- .lp-search-input, .lp-search-submit, .lp-city, .lp-state {
-    font-size: 16px;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-    border: 3px solid black;
-    color: #757575;
+.lp-search-input, .lp-search-submit, .lp-city, .lp-state {
+	font-size: 16px;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  border: 3px solid black;
+  color: #757575;
 }
 
 .lp-search-input:hover {
@@ -154,7 +150,6 @@ img {
 }
 
 /* RESULTS PAGE */
-
 p {
 	box-sizing: border-box;
 	max-width: 300px;
@@ -170,12 +165,10 @@ p {
 	margin-right: auto;
 }
 
-/* rp-video-section */
 .rp-video-section {
 	margin-top: 50px;
 }
 
-/* rp-quote-section */
 .rp-quote-section {
 	display: block;
 	text-align: center;

@@ -1,34 +1,57 @@
 /* YOUTUBE */
-var YOUTUBE_API = "https://www.googleapis.com/youtube/v3/search";
+var youTubeAPI = "https://www.googleapis.com/youtube/v3/search";
 var youTubeCallParams = {
 	part: 'snippet',
 	key: 'AIzaSyAvVDxP5JbEej3bMbeCftybGlcTe34tBCQ',
 	type: 'video',
 };
+var videoId;
 
-function youTubeToDOM (data) {
-	$('#video-and-meetup').prepend(
-		"<iframe id='video-section' class='col-xs-8 video' height='360' width='640' src='https:www.youtube.com/embed/" + data.items[0].id.videoId + "'" + "frameborder='2px solid black' allowfullscreen></iframe>");
+function youTubeCallback (data) {
+	videoId = data.items[0].id.videoId;
+	player.cueVideoById(videoId);
 }
 
-// ELEMENT CLEARING FUNCTIONS
-function clearFrame () {
-	$('#video-section').remove();
+function getVideoId () {
+	$.getJSON(youTubeAPI, youTubeCallParams, youTubeCallback);
 }
 
+
+/* CLEARING */
 function clearQuote () {
 	$('#the-quote').empty();
 	$('#the-person').empty();
 }
 
 function clearSearch () {
-	$('.rp-search-bar').text().empty();
+	$('input').val('');
 }
 
 
-function getYouTubeData () {
-	$.getJSON(YOUTUBE_API, youTubeCallParams, youTubeToDOM);
+/* IFRAME */
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var player;
+
+function onYouTubeIframeAPIReady () {
+	player = new YT.Player('player', {
+		height: '360',
+		width: '640',
+		videoId: '',
+		events: {
+			'onStateChange': onPlayerStateChange
+		}
+	});
 }
+
+function onPlayerStateChange(event) {
+	if (event.data == YT.PlayerState.ENDED) {
+		player.loadVideoById ('4MJRS-cLozU');
+	}
+}
+
 
 /* QUOTES */
 var codingQuotes = [
@@ -55,12 +78,9 @@ function getQuote (codingQuotes) {
 	$('#the-person').append("=> " + newQuote.name);
 }
 
+
 /* DOM MODS */
 function hideLandingPage () {
-	$('#lp').fadeOut(0);
-}
-
-function hideResultsPage () {
 	$('#lp').fadeOut(0);
 }
 
@@ -69,32 +89,29 @@ function unhideResultsPage () {
 }
 
 
-/* EVENT LISTENERS */
+/* LISTENERS */
 $('.a').on('click', function (e) {
 	e.preventDefault();
+	$('iframe').addClass('col-xs-8');
 
-	clearFrame();
-	clearQuote();
-
+	// get user input => search youtube => add id to iframe
 	youTubeCallParams.q = $('.lp-search-bar').val();
+	getVideoId();
 	
-	getYouTubeData();
+	
 	getQuote(codingQuotes);
-
-
 	hideLandingPage();
 	unhideResultsPage();
 });
 
 $('.b').on('click', function (e) {
 	e.preventDefault();
-
-	clearFrame();
 	clearQuote();
-	
 
+	// get user input => search youtube => add id to iframe
 	youTubeCallParams.q = $('.rp-search-bar').val();
-	
-	getYouTubeData();
+	getVideoId();
+
+	clearSearch();
 	getQuote(codingQuotes);
 });

@@ -2,7 +2,6 @@
 	background-color: black;
 	border: 1px solid black;
 	color: white;
-	/*border: none;*/
 }
 
 html {
@@ -44,16 +43,11 @@ li {
 	border-top: 0px;
 }
 
-p {
-
-}
-
 .container {
 	margin-top: 72px;
 	margin-bottom: 108px;
 
 }
-
 
 #title-and-search {
 	height: 30%;
@@ -90,7 +84,6 @@ p {
 	font-size: 18px;
 	color: white;
 }
-
 
 #the-quote, #the-person {
 	height: 50%;
