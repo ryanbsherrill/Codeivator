@@ -16,7 +16,6 @@ function getVideoId () {
 	$.getJSON(youTubeAPI, youTubeCallParams, youTubeCallback);
 }
 
-
 /* CLEARING */
 function clearQuote () {
 	$('#the-quote').empty();
@@ -27,12 +26,19 @@ function clearSearch () {
 	$('input').val('');
 }
 
+/* IFRAME
 
-/* IFRAME */
+This section was mainly copied from YouTube specs,
+but edited to suit the needs of this particular app.
+Attubution goes to YouTube, and you can check the
+
+"YouTube Player API Reference for iframe Embeds" here: 
+https://developers.google.com/youtube/iframe_api_reference */
+
 var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
+	tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 
 function onYouTubeIframeAPIReady () {
@@ -51,7 +57,6 @@ function onPlayerStateChange(event) {
 		player.loadVideoById ('4MJRS-cLozU');
 	}
 }
-
 
 /* QUOTES */
 var codingQuotes = [
@@ -78,7 +83,6 @@ function getQuote (codingQuotes) {
 	$('#the-person').append("=> " + newQuote.name);
 }
 
-
 /* DOM MODS */
 function hideLandingPage () {
 	$('#lp').fadeOut(0);
@@ -87,7 +91,6 @@ function hideLandingPage () {
 function unhideResultsPage () {
 	$('#rp').removeClass('hidden');
 }
-
 
 /* LISTENERS */
 $('.a').on('click', function (e) {
