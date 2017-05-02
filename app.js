@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 /* YOUTUBE */
 var youTubeAPI = "https://www.googleapis.com/youtube/v3/search";
 var youTubeCallParams = {
@@ -30,7 +32,7 @@ function clearSearch () {
 
 This section was mainly copied from YouTube specs,
 but edited to suit the needs of this particular app.
-Attubution goes to YouTube, and you can check the
+Attubution goes to YouTube, and you can check the =>
 
 "YouTube Player API Reference for iframe Embeds" here: 
 https://developers.google.com/youtube/iframe_api_reference */
@@ -92,6 +94,16 @@ function unhideResultsPage () {
 	$('#rp').removeClass('hidden');
 }
 
+/* CLEARING */
+function clearQuote () {
+	$('#the-quote').empty();
+	$('#the-person').empty();
+}
+
+function clearSearch () {
+	$('input').val('');
+}
+
 /* LISTENERS */
 $('.a').on('click', function (e) {
 	e.preventDefault();
@@ -100,7 +112,48 @@ $('.a').on('click', function (e) {
 	// get user input => search youtube => add id to iframe
 	youTubeCallParams.q = $('.lp-search-bar').val();
 	getVideoId();
+
+var another = "https://api.meetup.com/2/open_events?sign=true&photo-host=public&country=US&topic=JavaScript&city=Washington&state=DC&page=20&key=68617c6b1d76f47132910394a4b3a9";
+var topic = $('.lp-search-bar').val();
+var city = 'Washington';
+var state = 'DC';
+
+var meetupCallParams = {
+	"async": true,
+	"crossDomain": true,
+	"dataType": "jsonp",
+	"url": "https://api.meetup.com/2/open_events",
+	"data": {
+		"sign": true,
+		"photo-host": 'public',
+		"country": 'US',
+		"topic": topic,
+		"city": city,
+		"state": state,
+		"page": 5,
+		"key": '68617c6b1d76f47132910394a4b3a9',
+	},
+	"method": "GET",
+	"success":function(response){
+		console.log('success---',response);
+	}
+};
+
+function getAnEvent (response) {
+	return response.results.map(function(result) {
+		var event = `
+			<li><a href="${result.event_url}">${result.name}</a></li>
+		`;
+		console.log(event);
+		return event;
+	});
+}
+
+
+$.ajax(meetupCallParams).done(function (response) {
 	
+	$('.meetup-section').append(getAnEvent(response));
+});
 	
 	getQuote(codingQuotes);
 	hideLandingPage();
