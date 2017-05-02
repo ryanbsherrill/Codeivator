@@ -17,9 +17,53 @@
 					<label class="lp-header-label"><span class="lp-header-label-text">C O D E I V A T O R</span></label>
 				</div>
 				<div class="lp-search">
-					<input class="search-bar lp-search-bar" type="text" placeholder="JAVASCRIPT, ARRAYS" required="required" oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')"
-					oninput="setCustomValidity('')">
-					<button class="submit-button a" type="submit">[ SUBMIT ]</button>
+				
+					<select class="selectpicker search-bar lp-search-bar" required="required" oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')">
+						<option value="" disabled selected>[ SELECT LANGUAGE ]</option>
+						<option>Java</option>
+						<option>C</option>
+						<option>C++</option>
+						<option>C#</option>
+						<option>Python</option>
+						<option>Visual Basic.NET</option>
+						<option>PHP</option>
+						<option>JavaScript</option>
+						<option>Delphi/Object Pascal</option>
+						<option>Swift</option>
+						<option>Perl</option>
+						<option>Ruby</option>
+						<option>Assembly Language</option>
+						<option>R</option>
+						<option>Visual Basic</option>
+						<option>Objective-C</option>
+						<option>Go</option>
+						<option>MATLAB</option>
+						<option>SQL</option>
+						<option>Scratch</option>
+						<option>React</option>
+						<option>Angular</option>
+						<option>Node</option>
+					</select>
+
+
+
+
+					<input type="hidden" name="country" id="countryId" value="US"/>
+						
+						<select name="state" class="states order-alpha" id="stateId">
+   						<option value="">Select State</option>
+						</select>
+						
+						<select name="city" class="cities order-alpha" id="cityId">
+    					<option value="">Select City</option>
+						</select>
+
+				
+
+
+
+
+
 				</div>
 			</form>
 		</section>
@@ -30,8 +74,34 @@
 
 				<div id="title-and-search" class="row">
 					<span id="title" class="col-xs-4">C O D E I V A T O R</span>
-					<input class="col-xs-4 search-bar rp-search-bar" type="text" placeholder="JAVASCRIPT, ARRAYS" required="required" oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')"
-					oninput="setCustomValidity('')">
+				
+					<select class="col-xs-4 selectpicker search-bar rp-search-bar" required="required" oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')">
+						<option value="" disabled selected>[ SELECT LANGUAGE ]</option>
+						
+						<option>Java</option>
+						<option>C</option>
+						<option>C++</option>
+						<option>C#</option>
+						<option>Python</option>
+						<option>Visual Basic.NET</option>
+						<option>PHP</option>
+						<option>JavaScript</option>
+						<option>Delphi/Object Pascal</option>
+						<option>Swift</option>
+						<option>Perl</option>
+						<option>Ruby</option>
+						<option>Assembly Language</option>
+						<option>R</option>
+						<option>Visual Basic</option>
+						<option>Objective-C</option>
+						<option>Go</option>
+						<option>MATLAB</option>
+						<option>SQL</option>
+						<option>React</option>
+						<option>Angular</option>
+						<option>Node</option>
+
+					</select>
 					<button class="col-xs-4 submit-button b" type="submit">[ SUBMIT ]</button>
 				</div>
 
@@ -56,6 +126,7 @@
 
 		<!-- SCRIPTS -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="geodata.js"></script>
 		<script type="text/javascript" src="app.js"></script>
 	</body>
 </html>
