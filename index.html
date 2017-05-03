@@ -1,132 +1,117 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<title>CODEIVATOR</title>
-		<link rel="stylesheet" href="css/style2.css">
-		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	</head>
+<head>
+  <meta charset="utf-8">
+  <title>CODEIVATOR</title>
+  <link rel="stylesheet" href="css/style2.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
 
-	<body>
-		<!-- LANDING PAGE => lp -->
-		<section id="lp">
-			<form class="lp-form centered">
-				<div class="lp-header">
-					<label class="lp-header-label"><span class="lp-header-label-text">C O D E I V A T O R</span></label>
-				</div>
-				<div class="lp-search">
-				
-					<select class="selectpicker search-bar lp-search-bar" required="required" oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')">
-						<option value="" disabled selected>[ SELECT LANGUAGE ]</option>
-						<option>Java</option>
-						<option>C</option>
-						<option>C++</option>
-						<option>C#</option>
-						<option>Python</option>
-						<option>Visual Basic.NET</option>
-						<option>PHP</option>
-						<option>JavaScript</option>
-						<option>Delphi/Object Pascal</option>
-						<option>Swift</option>
-						<option>Perl</option>
-						<option>Ruby</option>
-						<option>Assembly Language</option>
-						<option>R</option>
-						<option>Visual Basic</option>
-						<option>Objective-C</option>
-						<option>Go</option>
-						<option>MATLAB</option>
-						<option>SQL</option>
-						<option>Scratch</option>
-						<option>React</option>
-						<option>Angular</option>
-						<option>Node</option>
-					</select>
+<body>
+  <!-- LANDING PAGE => lp -->
+  <section id="lp">
+    <form class="lp-form centered">
+      
+      <div class="lp-header">
+        <label class="lp-header-label"><span class="lp-header-label-text">C O D E I V A T O R</span></label>
+      </div>
+      
+      <div class="lp-search">
+        <select class="selectpicker search-bar lp-search-bar lp-search-input" required="required" oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')">
+          <option value="" disabled selected>[ TECH ]</option>
+          <option>Java</option>
+          <option>C</option>
+          <option>C++</option>
+          <option>C#</option>
+          <option>Python</option>
+          <option>Visual Basic.NET</option>
+          <option>PHP</option>Select Language
+          <option>JavaScript</option>
+          <option>Delphi/Object Pascal</option>
+          <option>Swift</option>
+          <option>Perl</option>
+          <option>Ruby</option>
+          <option>Assembly Language</option>
+          <option>R</option>
+          <option>Visual Basic</option>
+          <option>Objective-C</option>
+          <option>Go</option>
+          <option>MATLAB</option>
+          <option>SQL</option>
+          <option>Scratch</option>
+          <option>React</option>
+          <option>Angular</option>
+          <option>Node</option>
+        </select>
+        
+        <input type="hidden" name="country" id="countryId" value="US" />
+        
+        <select name="state" class="states order-alpha lp-state" id="stateId">
+          <option value="" disabled selected>[ STATE ]</option>
+        </select>
+        
+        <select name="city" class="cities order-alpha lp-city" id="cityId">
+          <option value="" disabled selected>[ CITY ]</option>
+        </select>
+        <button class="submit-button a lp-search-submit" type="submit">[ SUBMIT ]</button>
+      
+      </div>
+    </form>
+  </section>
+  <!-- RESULTS PAGE => rp -->
+  <section id="rp" class="hidden">
+    <div class="container">
+      <div id="title-and-search" class="row">
+        <span id="title" class="col-xs-4">C O D E I V A T O R</span>
+        <select class="col-xs-4 selectpicker search-bar rp-search-bar" required="required" oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')">
+          <option value="" disabled selected>[ LANGUAGE ]</option>
+          <option>Java</option>
+          <option>C</option>
+          <option>C++</option>
+          <option>C#</option>
+          <option>Python</option>
+          <option>Visual Basic.NET</option>
+          <option>PHP</option>
+          <option>JavaScript</option>
+          <option>Delphi/Object Pascal</option>
+          <option>Swift</option>
+          <option>Perl</option>
+          <option>Ruby</option>
+          <option>Assembly Language</option>
+          <option>R</option>
+          <option>Visual Basic</option>
+          <option>Objective-C</option>
+          <option>Go</option>
+          <option>MATLAB</option>
+          <option>SQL</option>
+          <option>React</option>
+          <option>Angular</option>
+          <option>Node</option>
+        </select>
+        <button class="col-xs-4 submit-button b" type="submit">[ SUBMIT ]</button>
+      </div>
+      <div id="video-and-meetup" class="row">
+        <div id="player"></div>
+        <ul id="meetup-section" class="meetup-section col-xs-4">
+        </ul>
+      </div>
+      <div id="quote-section" class="row">
+        <div class="col-xs-8 quote">
+          <p id="the-quote"></p>
+          <p id="the-person"></p>
+        </div>
+        <div class="col-xs-4 mdn">
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SCRIPTS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="geodata.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
 
-
-
-
-					<input type="hidden" name="country" id="countryId" value="US"/>
-						
-						<select name="state" class="states order-alpha" id="stateId">
-   						<option value="">Select State</option>
-						</select>
-						
-						<select name="city" class="cities order-alpha" id="cityId">
-    					<option value="">Select City</option>
-						</select>
-
-				
-
-
-
-
-
-				</div>
-			</form>
-		</section>
-
-		<!-- RESULTS PAGE => rp -->
-		<section id="rp" class="hidden">
-			<div class="container">
-
-				<div id="title-and-search" class="row">
-					<span id="title" class="col-xs-4">C O D E I V A T O R</span>
-				
-					<select class="col-xs-4 selectpicker search-bar rp-search-bar" required="required" oninvalid="this.setCustomValidity('I cannot guide you until you give me... something to guide!')">
-						<option value="" disabled selected>[ SELECT LANGUAGE ]</option>
-						
-						<option>Java</option>
-						<option>C</option>
-						<option>C++</option>
-						<option>C#</option>
-						<option>Python</option>
-						<option>Visual Basic.NET</option>
-						<option>PHP</option>
-						<option>JavaScript</option>
-						<option>Delphi/Object Pascal</option>
-						<option>Swift</option>
-						<option>Perl</option>
-						<option>Ruby</option>
-						<option>Assembly Language</option>
-						<option>R</option>
-						<option>Visual Basic</option>
-						<option>Objective-C</option>
-						<option>Go</option>
-						<option>MATLAB</option>
-						<option>SQL</option>
-						<option>React</option>
-						<option>Angular</option>
-						<option>Node</option>
-
-					</select>
-					<button class="col-xs-4 submit-button b" type="submit">[ SUBMIT ]</button>
-				</div>
-
-				<div id="video-and-meetup" class="row">
-					<div id="player"></div>
-					<ul id="meetup-section" class="meetup-section col-xs-4">
-
-					</ul>
-				</div>
-				
-				<div id="quote-section" class="row">
-					<div class="col-xs-8 quote">
-						<p id="the-quote"></p>
-						<p id="the-person"></p>
-					</div>
-					<div class="col-xs-4 mdn">
-					</div>
-				</div>
-
-			</div>
-		</section>
-
-		<!-- SCRIPTS -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="geodata.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-	</body>
 </html>
+

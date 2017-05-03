@@ -64,7 +64,7 @@ img {
 
 .lp-header-label {
 	margin: 0px;
-	font-size: 57px;
+	font-size: 50px;
 	color: white;
 	display: block;
 }
@@ -74,9 +74,6 @@ img {
 	margin-top: 0px;
 }
 
-
-.lp-search {
-}
 
 .lp-search-input, .lp-city, .lp-state, .lp-search-submit {
 	font-family: "Interstate","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
@@ -90,9 +87,9 @@ img {
 }
 
 .lp-search-submit {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+	display: inline;
+	/*margin-left: auto;
+	margin-right: auto;*/
     height: 25px;
 }
 
@@ -123,12 +120,13 @@ img {
 }
 
 .lp-search-input, .lp-search-submit, .lp-city, .lp-state {
-	font-size: 16px;
+	font-size: 18px;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
   border: 3px solid black;
   color: #757575;
+  min-width: 120px;
 }
 
 .lp-search-input:hover {
