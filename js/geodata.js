@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 /* Attribution: Geodata Solutions
 website: https://geodata.solutions */
 
@@ -6,12 +8,11 @@ function ajaxCall() {
     type = type || 'json';
     var successRes = function(data) {
       success(data);
-    };
+    }
 
     var errorRes = function(e) {
       console.log(e);
-    };
-
+    }
     jQuery.ajax({
       url: url,
       type: method,
@@ -21,16 +22,16 @@ function ajaxCall() {
       dataType: type,
       timeout: 60000
     });
-  };
+
+  }
+
 }
 
 function locationInfo() {
   var rootUrl = "https://geodata.solutions/api/api.php";
-
   //set default values
   var username = 'demo';
   var ordering = 'name';
-
   //now check for set values
   var addParams = '';
   if (jQuery("#gds_appid").length > 0) {
@@ -43,10 +44,8 @@ function locationInfo() {
   var call = new ajaxCall();
   this.getCities = function(id) {
     jQuery(".cities option:gt(0)").remove();
-
     //get additional fields
     var stateClasses = jQuery('#cityId').attr('class');
-
     //console.log(stateClasses);
     var cC = stateClasses.split(" ");
     cC.shift();
@@ -60,14 +59,13 @@ function locationInfo() {
     var data = {};
     jQuery('.cities').find("option:eq(0)").html("Please wait..");
     call.send(data, url, method, function(data) {
-      jQuery('.cities').find("option:eq(0)").html("[ CITY ]");
+      jQuery('.cities').find("option:eq(0)").html("Select City");
       if (data.tp == 1) {
         if (data.hits > 500) {
-
           //alert('Free usage far exceeded. Please subscribe at geodata.solutions.');
           console.log('Daily geodata.solutions hit count:' + data.hits);
         } else {
-          console.log('Daily geodata.solutions hit count:' + data.hits);
+          console.log('Daily geodata.solutions hit count:' + data.hits)
         }
 
         var listlen = Object.keys(data['result']).length;
@@ -112,13 +110,13 @@ function locationInfo() {
     var data = {};
     jQuery('.states').find("option:eq(0)").html("Please wait..");
     call.send(data, url, method, function(data) {
-      jQuery('.states').find("option:eq(0)").html("[ STATE ]");
+      jQuery('.states').find("option:eq(0)").html("Select State");
       if (data.tp == 1) {
         if (data.hits > 500) {
           //alert('Free usage far exceeded. Please subscribe at geodata.solutions.');
           console.log('Daily geodata.solutions hit count exceeded: ' + data.hits + ' of 500.');
         } else {
-          console.log('Daily geodata.solutions hit count:' + data.hits);
+          console.log('Daily geodata.solutions hit count:' + data.hits)
         }
         jQuery.each(data['result'], function(key, val) {
           var option = jQuery('<option />');
