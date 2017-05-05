@@ -1,8 +1,8 @@
 /* jshint esversion: 6 */
 
 /* YOUTUBE */
-var youTubeAPI = "https://www.googleapis.com/youtube/v3/search";
-var youTubeCallParams = {
+const youTubeAPI = "https://www.googleapis.com/youtube/v3/search";
+let youTubeCallParams = {
 	part: 'snippet',
 	key: 'AIzaSyAvVDxP5JbEej3bMbeCftybGlcTe34tBCQ',
 	type: 'video',
@@ -10,47 +10,24 @@ var youTubeCallParams = {
 
 };
 
-function programmify () {
-	youTubeCallParams.q += `coding programming tutorials`;
-	console.log(youTubeCallParams.q);
-}
-
-var videoId;
-
-function youTubeCallback (data) {
-	videoId = data.items[0].id.videoId;
-	player.cueVideoById(videoId);
-}
-
-function getVideoId () {
-	$.getJSON(youTubeAPI, youTubeCallParams, youTubeCallback);
-}
-
-/* CLEARING */
-function clearQuote () {
-	$('#the-quote').empty();
-	$('#the-person').empty();
-}
-
-function clearSearch () {
-	$('input').val('');
-}
+let videoId;
+programmify = () => `${youTubeCallParams.q} coding programming tutorials`;
+youTubeCallback = (data) => { videoId = data.items[0].id.videoId;player.cueVideoById(videoId); };
+getVideoId = () => { $.getJSON(youTubeAPI, youTubeCallParams, youTubeCallback); };
 
 /* IFRAME
-
 This section was mainly copied from YouTube API specs,
 but was edited to suit the needs of this particular app.
 Attubution goes to YouTube, and you can check the =>
 "YouTube Player API Reference for iframe Embeds" here: 
 https://developers.google.com/youtube/iframe_api_reference */
-
-var tag = document.createElement('script');
+let tag = document.createElement('script');
 	tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
+let firstScriptTag = document.getElementsByTagName('script')[0];
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-var player;
+let player;
 
-function onYouTubeIframeAPIReady () {
+onYouTubeIframeAPIReady = () => {
 	player = new YT.Player('player', {
 		height: '360',
 		width: '640',
@@ -59,24 +36,22 @@ function onYouTubeIframeAPIReady () {
 			'onStateChange': onPlayerStateChange
 		}
 	});
-}
+};
 
-function onPlayerStateChange(event) {
+onPlayerStateChange = (event) => {
 	if (event.data == YT.PlayerState.ENDED) {
 		player.loadVideoById ('4MJRS-cLozU');
 	}
-}
-
-/* MEETUP */
-var topic = function () {
-	console.log($('.lp-search-bar').val().split(/[ .:;?!~,`"&|()<>{}\[\]\r\n/\\]/).join());
-	return $('.lp-search-bar').val();
 };
 
-var city = 'Washington';
-var state = 'DC';
+/* MEETUP */
+getTopic = () => { meetupCallParams.topic = $('.lp-search-bar').val(); };
 
-var meetupCallParams = {
+getState = () => { meetupCallParams.state = $(".lp-state").find(':selected').attr('stateid'); };
+
+getCity = () =>  { meetupCallParams.city = $('.lp-city').val();};
+
+let meetupCallParams = {
 	"async": true,
 	"crossDomain": true,
 	"dataType": "jsonp",
@@ -85,36 +60,33 @@ var meetupCallParams = {
 		"sign": true,
 		"photo-host": 'public',
 		"country": 'US',
-		"topic": topic,
-		"city": city,
-		"state": state,
 		"page": 5,
 		"key": '68617c6b1d76f47132910394a4b3a9',
 	},
 	"method": "GET",
-	"success":function(response){
+	"success": (response) => {
 		console.log('success---',response);
 	}
 };
 
-function getAnEvent (response) {
-	return response.results.map(function(result) {
-		var event = `
-			<li><a href="${result.event_url}">${result.name}</a></li>
+getAnEvent = (response) => {
+	return response.results.map( (result) => {
+		let event = `
+			<li><a href=${result.event_url} target="_blank">${result.name}</a></li>
 		`;
 		console.log(event);
 		return event;
 	});
-}
+};
 
-function getMeetupData () {
-	$.ajax(meetupCallParams).done(function (response) {
+getMeetupData = () => {
+	$.ajax(meetupCallParams).done((response) => {
 		$('.meetup-section').append(getAnEvent(response));
 	});
-}
+};
 
 /* QUOTES */
-var codingQuotes = [
+let codingQuotes = [
 	{
 		name: "Steve Jobs",
 		quote: "Think Different",
@@ -132,38 +104,24 @@ var codingQuotes = [
 	},
 ];
 
-function getQuote (codingQuotes) {
-	var newQuote = codingQuotes[Math.floor(Math.random() * codingQuotes.length)];
+getQuote = (codingQuotes) => {
+	let newQuote = codingQuotes[Math.floor(Math.random() * codingQuotes.length)];
 	$('#the-quote').append('"' + newQuote.quote + '"');
 	$('#the-person').append("=> " + newQuote.name);
-}
+};
 
 /* DOM MODS */
-function hideLandingPage () {
-	$('#lp').fadeOut(0);
-}
-
-function unhideResultsPage () {
-	$('#rp').removeClass('hidden');
-}
+let hideLandingPage = () => { $('#lp').fadeOut(0); };
+let unhideResultsPage = () => { $('#rp').removeClass('hidden'); };
 
 /* CLEARING */
-function clearQuote () {
-	$('#the-quote').empty();
-	$('#the-person').empty();
-}
+let clearQuote = () => { $('#the-quote').empty(); $('#the-person').empty(); };
 
-function clearSearch () {
-	$('input').val('');
-}
+let clearSearch = () => { $('input').val(''); };
 
 /* LISTENERS */
-$('.a').on('click', function (e) {
+$('.a').on('click', (e) => {
 	e.preventDefault();
-
-	$.get("http://ipinfo.io", function(response) {
-    console.log(response);
-	}, "jsonp");
 	
 	// youtube
 	$('iframe').addClass('col-xs-8');
@@ -172,7 +130,9 @@ $('.a').on('click', function (e) {
 	getVideoId();
 
 	// meetup
-	topic();
+	getTopic();
+	getState();
+	getCity();
 	getMeetupData();
 	
 	// quote
@@ -181,7 +141,7 @@ $('.a').on('click', function (e) {
 	unhideResultsPage();
 });
 
-$('.b').on('click', function (e) {
+$('.b').on('click', (e) => {
 	e.preventDefault();
 	clearQuote();
 

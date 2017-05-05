@@ -26,9 +26,11 @@ function ajaxCall() {
 
 function locationInfo() {
   var rootUrl = "https://geodata.solutions/api/api.php";
+
   //set default values
   var username = 'demo';
   var ordering = 'name';
+
   //now check for set values
   var addParams = '';
   if (jQuery("#gds_appid").length > 0) {
@@ -41,8 +43,10 @@ function locationInfo() {
   var call = new ajaxCall();
   this.getCities = function(id) {
     jQuery(".cities option:gt(0)").remove();
+
     //get additional fields
     var stateClasses = jQuery('#cityId').attr('class');
+
     //console.log(stateClasses);
     var cC = stateClasses.split(" ");
     cC.shift();
@@ -59,6 +63,7 @@ function locationInfo() {
       jQuery('.cities').find("option:eq(0)").html("[ CITY ]");
       if (data.tp == 1) {
         if (data.hits > 500) {
+
           //alert('Free usage far exceeded. Please subscribe at geodata.solutions.');
           console.log('Daily geodata.solutions hit count:' + data.hits);
         } else {
@@ -142,4 +147,3 @@ jQuery(function() {
     }
   });
 });
-
