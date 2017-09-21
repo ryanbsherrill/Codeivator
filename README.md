@@ -1,2 +1,2 @@
 # codeivator
-https://ryanbsherrill.github.io/codeivator/
+https://ryanbsherrill.github.io/Codeivator/
